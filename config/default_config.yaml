@@ -1,0 +1,25 @@
+# GPU Monitor Configuration File
+
+# Monitoring settings
+refresh_rate: 2
+gpu_count: 8
+
+# Alert thresholds
+alerts:
+  gpu_util_warning: 90
+  gpu_util_danger: 95
+  gpu_mem_warning: 95
+  gpu_mem_danger: 98
+  gpu_temp_warning: 80
+  gpu_temp_danger: 85
+  cpu_mem_warning: 85
+  cpu_mem_danger: 95
+
+# Logging settings
+log_enabled: true
+log_dir: /var/log/gpu_monitor
+log_retention_days: 7
+
+# Display settings
+compact_mode: false
+show_pcie: true
