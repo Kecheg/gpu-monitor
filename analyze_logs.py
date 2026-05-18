@@ -1,16 +1,27 @@
 #!/usr/bin/env python3
-"""Analyze GPU monitor logs and create charts."""
+"""Analyze GPU monitor logs and create charts.
+
+This is a utility script for ad-hoc log analysis.
+Edit LOG_FILE and START_HOUR below to analyze different logs.
+"""
 
 import re
+import sys
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 from datetime import datetime
 from pathlib import Path
 from collections import defaultdict
 
-# Settings
-LOG_FILE = "/var/log/gpu_monitor/gpu_monitor_20260518.log"
-START_HOUR = 19  # 19:00
+# Settings - modify these as needed
+LOG_FILE = "/var/log/gpu_monitor/gpu_monitor_20260518.log"  # Or specify: sys.argv[1] if provided
+START_HOUR = 19  # 19:00 - analyze logs from this hour onwards
+
+# Allow passing log file as command line argument
+if len(sys.argv) > 1:
+    LOG_FILE = sys.argv[1]
+if len(sys.argv) > 2:
+    START_HOUR = int(sys.argv[2])
 
 def parse_log_line(line):
     """Parse a single log line and extract GPU data."""
